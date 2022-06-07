@@ -3,10 +3,13 @@ import * as Rx from "typeless/rx";
 
 import { CounterActions, CounterState, useModule } from "./interface";
 import { Counter } from "./components/Counter";
+import { delay } from "typeless/rx";
 
-useModule.epic().on(CounterActions.startCount, () => {
-  return Rx.of(CounterActions.countDone(1).pipe(Rx.delay(500)));
-});
+useModule
+  .epic()
+  .on(CounterActions.startCount, () =>
+    Rx.of(CounterActions.countDone(1)).pipe(delay(500))
+  );
 
 const initialState: CounterState = {
   isLoading: false,
@@ -16,14 +19,17 @@ const initialState: CounterState = {
 // reducer定義
 useModule
   .reducer(initialState)
+  .on(CounterActions.startCount, (state) => {
+    state.isLoading = true;
+  })
   .on(CounterActions.countDone, (state, { count }) => {
     state.isLoading = false;
     state.count += count;
   });
 
-export default function CounterModule() {
+export function CounterModule() {
   // epicとreducerをロード
   useModule();
 
-  return Counter;
+  return <Counter />;
 }
