@@ -1,7 +1,6 @@
 import React from "react";
 import { MainView } from "./components/MainView";
-import { useModule, MainActions } from "./interface";
-import { MainState } from "./symbol";
+import { useModule, MainActions, MainState } from "./interface";
 
 const initialState: MainState = {
   viewType: null,

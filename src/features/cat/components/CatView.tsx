@@ -3,7 +3,7 @@ import { useActions } from "typeless";
 import { CatActions, getCatState } from "../interface";
 
 export function CatView() {
-  const { load, cancel } = useActions(CatActions);
+  const { startLoadToCat, cancelLoadToCat } = useActions(CatActions);
   const { viewType, cat, error } = getCatState.useState();
 
   const boxStyle: React.CSSProperties = {
@@ -19,11 +19,11 @@ export function CatView() {
         return (
           <>
             {cat ? (
-              <img src={cat.imageUrl} style={boxStyle} />
+              <img src={cat.imgUrl} style={boxStyle} />
             ) : (
               <div style={boxStyle}>No cat loaded yet</div>
             )}
-            <button onClick={load}>
+            <button onClick={startLoadToCat}>
               {cat ? "Load another 😺" : "Load 😺"}
             </button>
           </>
@@ -33,7 +33,9 @@ export function CatView() {
         return (
           <>
             <div style={boxStyle} />
-            <button onClick={cancel}>Loading... Click to cancel</button>
+            <button onClick={cancelLoadToCat}>
+              Loading... Click to cancelLoadToCat
+            </button>
           </>
         );
       }
@@ -44,7 +46,7 @@ export function CatView() {
               😿 <br />
               An error occurred: {error}
             </div>
-            <button onClick={load}>Click here to retry</button>
+            <button onClick={startLoadToCat}>Click here to retry</button>
           </>
         );
       }

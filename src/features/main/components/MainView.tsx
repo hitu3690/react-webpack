@@ -1,11 +1,10 @@
 import React, { Suspense } from "react";
 import { useActions } from "typeless";
-import { MainActions, getMainState } from "../interface";
-import { ViewType } from "../symbol";
+import { MainActions, getMainState, ViewType } from "../interface";
 
 /** 遅延させたいコンポーネント */
-const SubA = React.lazy(() => import("../../counter/module"));
-const SubB = React.lazy(() => import("../../cat/module"));
+const Counter = React.lazy(() => import("../../counter/module"));
+const Cat = React.lazy(() => import("../../cat/module"));
 const SubC = React.lazy(() => import("../../counter/module"));
 /** メインコンポーネント */
 export function MainView() {
@@ -16,11 +15,11 @@ export function MainView() {
   // 遅延コンポーネントを切り替えるTSX
   const renderContent = () => {
     switch (viewType) {
-      case "subA": {
-        return <SubA />;
+      case "counter": {
+        return <Counter />;
       }
-      case "subB": {
-        return <SubB />;
+      case "cat": {
+        return <Cat />;
       }
       case "subC": {
         return <SubC />;
@@ -49,8 +48,8 @@ export function MainView() {
         <option disabled value="">
           -- select --
         </option>
-        <option value="subA">Module A</option>
-        <option value="subB">Module B</option>
+        <option value="counter">Module Counter</option>
+        <option value="cat">Module Cat</option>
         <option value="subC">Module C</option>
       </select>
       <div style={{ padding: 15 }}>

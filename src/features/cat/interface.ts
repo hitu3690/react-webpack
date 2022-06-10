@@ -1,11 +1,23 @@
 import { createModule } from "typeless";
-import { Cat, CatState, CatSymbol } from "./symbol";
+import { CatSymbol } from "./symbol";
 
 export const [useModule, CatActions, getCatState] = createModule(CatSymbol)
   .withActions({
-    load: null,
-    cancel: null,
-    catLoaded: (cat: Cat) => ({ payload: { cat } }),
-    errorOcurred: (error: string) => ({ payload: { error } }),
+    startLoadToCat: null,
+    cancelLoadToCat: null,
+    succeedLoadToCat: (cat: Cat) => ({ payload: { cat } }),
+    occersError: (error: string) => ({ payload: { error } }),
   })
   .withState<CatState>();
+
+type ViewType = "loading" | "details" | "error";
+
+interface Cat {
+  imgUrl: string;
+}
+
+export interface CatState {
+  viewType: ViewType;
+  cat: Cat | null;
+  error: string;
+}
