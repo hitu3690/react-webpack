@@ -9,9 +9,12 @@ export interface CounterState {
 export const [useModule, CounterActions, getCounterState] = createModule(
   CounterSymbol
 )
-  // ActionCreators定義
   .withActions({
+    increment: null,
+    decrement: null,
+    reset: null,
+    alertCount: null,
     startCount: null,
-    countDone: (count: number) => ({ payload: { count } }),
+    doneCount: (count: number) => ({ payload: { count } }),
   })
   .withState<CounterState>();

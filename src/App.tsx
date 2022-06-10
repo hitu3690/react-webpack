@@ -1,11 +1,13 @@
 import React from "react";
-import { DefaultTypelessProvider } from "typeless";
-import { CounterModule } from "./features/counter/module";
+import { DefaultTypelessProvider, Registry, TypelessContext } from "typeless";
+import MainModule from "./features/main/module";
+
+const registry = new Registry();
 
 export const App: React.FC = () => {
   return (
-    <DefaultTypelessProvider>
-      <CounterModule />
-    </DefaultTypelessProvider>
+    <TypelessContext.Provider value={{ registry }}>
+      <MainModule />
+    </TypelessContext.Provider>
   );
 };
