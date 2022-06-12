@@ -5,7 +5,7 @@ import { MainActions, getMainState, ViewType } from "../interface";
 /** 遅延させたいコンポーネント */
 const Counter = React.lazy(() => import("../../counter/module"));
 const Cat = React.lazy(() => import("../../cat/module"));
-const SubC = React.lazy(() => import("../../counter/module"));
+const CounterExtend = React.lazy(() => import("../../counterExtend/module"));
 /** メインコンポーネント */
 export function MainView() {
   // ActionsとStateを呼び出す
@@ -21,8 +21,8 @@ export function MainView() {
       case "cat": {
         return <Cat />;
       }
-      case "subC": {
-        return <SubC />;
+      case "counterExtend": {
+        return <CounterExtend />;
       }
     }
   };
@@ -50,7 +50,7 @@ export function MainView() {
         </option>
         <option value="counter">Module Counter</option>
         <option value="cat">Module Cat</option>
-        <option value="subC">Module C</option>
+        <option value="counterExtend">Module CounterExtend</option>
       </select>
       <div style={{ padding: 15 }}>
         <Suspense fallback={<div>Loading...</div>}>{renderContent()}</Suspense>

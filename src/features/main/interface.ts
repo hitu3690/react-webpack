@@ -7,7 +7,7 @@ export const [useModule, MainActions, getMainState] = createModule(MainSymbol)
   })
   .withState<MainState>();
 
-export type ViewType = "counter" | "cat" | "subC";
+export type ViewType = "counter" | "cat" | "counterExtend";
 
 export interface MainState {
   viewType: ViewType | null;
