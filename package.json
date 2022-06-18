@@ -6,15 +6,31 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "dev": "webpack serve --open"
+    "dev": "webpack serve"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/moment": "^2.13.0",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "@types/xml2js": "^0.4.11",
+    "axios": "^0.27.2",
+    "buffer": "^6.0.3",
+    "http-proxy-middleware": "^2.0.6",
+    "moment": "^2.29.3",
+    "node-sass": "^7.0.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "^5.0.1",
+    "rxjs": "^6.6.7",
+    "stream": "^0.0.2",
+    "stream-browserify": "^3.0.0",
+    "timers-browserify": "^2.0.12",
+    "typeless": "^1.7.0",
+    "util": "^0.12.4",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",

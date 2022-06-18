@@ -66,12 +66,23 @@ module.exports = {
    * static.derectory
    *  サーバーの起点となるディレクトリを記述
    * port
+   * proxy
+   *  外部APIを呼ぶときのCORS対策
    */
   devServer: {
     static: {
       directory: path.join(__dirname, "dist"),
     },
     port: 3000,
+    proxy: {
+      "/rss": {
+        target: "https://www.pokemon.com/us/pokemon-news/",
+        changeOrigin: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    },
   },
   /** resolve
    * 概要
@@ -81,6 +92,9 @@ module.exports = {
    */
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json"],
+    fallback: {
+      timers: false,
+    },
   },
   /** target
    * 概要
