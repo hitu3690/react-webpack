@@ -1,0 +1,35 @@
+.accordionButton {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .accordionButton {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    margin-bottom: 28px;
+    cursor: pointer;
+    span {
+      font-family: YuGothic;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: left;
+      color: #333;
+    }
+  }
+
+  .gray {
+    background: #eaeaea;
+    margin-bottom: 1px !important;
+    span {
+      color: #00aaeb;
+    }
+    img {
+      transform: rotate(180deg);
+    }
+  }
+}

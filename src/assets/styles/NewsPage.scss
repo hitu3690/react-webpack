@@ -1,0 +1,124 @@
+.newsPage {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 4rem;
+  position: relative;
+  transition: all 0.5s ease;
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    &--text {
+      font-family: YuGothic;
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 27px;
+      text-align: left;
+      color: #333;
+    }
+    &--button {
+      font-family: YuGothic;
+      font-weight: bold;
+      font-size: 14px;
+      text-align: right;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 68px;
+      height: 30px;
+      background: #fff;
+      border: 1px solid #000;
+      cursor: pointer;
+    }
+  }
+  &__content {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    // cardのまとめるcontentのwidth100% - (card * 3枚分)を、2で割った分
+    column-gap: calc((100% - (216px * 3)) / 2);
+    position: relative;
+    overflow: hidden;
+    // (cardのheight + paddin) * 3枚分の高さ
+    height: calc(408px * 3);
+    transition: all 0.5s ease;
+    /*
+     * もっと見るボタン付近のグラデーション
+     */
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      content: '';
+      height: 10rem;
+      background: -webkit-linear-gradient(
+        top,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        #fff 100%
+      );
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        #fff 100%
+      );
+      transition: all 0.5s ease;
+    }
+  }
+  &__checkbox {
+    display: none;
+    transition: all 0.5s ease;
+    &:checked ~ .newsPage__label {
+      bottom: -1rem;
+      transition: all 0.5s ease;
+      &::before {
+        content: '閉じる';
+        transition: all 0.5s ease;
+      }
+    }
+    &:checked ~ .newsPage__content {
+      height: auto;
+      transition: all 0.5s ease;
+      &::before {
+        display: none;
+        transition: all 0.5s ease;
+      }
+    }
+  }
+  &__label {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 362px;
+    height: 4rem;
+    cursor: pointer;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    bottom: 0;
+    left: 50%;
+    z-index: 2;
+    background-color: #000;
+    color: #fff;
+    transition: all 0.5s ease;
+    &::before {
+      content: '続きを読む';
+      transition: all 0.5s ease;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .newsPage {
+    &__content {
+      justify-content: center;
+    }
+    &__label {
+      width: 90%;
+    }
+  }
+}

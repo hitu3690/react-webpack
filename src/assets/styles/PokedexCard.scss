@@ -1,0 +1,90 @@
+.pokedexCard {
+  border: 1px solid #cfcfcf;
+  padding: 20px;
+  cursor: pointer;
+  &__image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #dbdbdb;
+    & img {
+      width: 321px;
+      height: auto;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    div {
+      display: flex;
+      justify-content: space-between;
+      span {
+        &:first-child {
+          font-family: YuGothic;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+          text-align: center;
+          color: #333;
+        }
+        &:last-child {
+          font-family: YuGothic;
+          font-weight: bold;
+          font-size: 14px;
+          line-height: 21px;
+          text-align: center;
+          color: #333;
+        }
+      }
+      div {
+        display: flex;
+        justify-content: flex-end;
+        column-gap: 20px;
+        span {
+          font-weight: bold !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pokedexCard {
+    width: 100%;
+  }
+}
+
+@for $index from 1 through 10 {
+  .card-#{$index} {
+    animation-delay: 0.3s * $index;
+  }
+}
+
+/*==================================================
+cardをそれぞれ順番に、ふわっと表示させるアニメーション
+===================================*/
+
+.fade {
+  opacity: 0;
+}
+
+.fadeUp {
+  animation-name: fadeUpAnime;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+@keyframes fadeUpAnime {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

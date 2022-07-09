@@ -1,0 +1,48 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0px;
+    li {
+      font-family: YuGothic;
+      font-weight: bold;
+      font-size: 1rem;
+      text-align: center;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 36px;
+      width: 36px;
+      margin-right: 8px;
+      cursor: pointer;
+      &:first-child {
+        margin-right: 0px;
+        transform: rotate(90deg);
+      }
+      &:last-child {
+        margin-right: 0px;
+        transform: rotate(-90deg);
+      }
+      &:hover {
+        background-color: #cfcfcf;
+      }
+      &.isCurrentButton {
+        background: #000 !important;
+        color: #fff !important;
+        cursor: unset !important;
+      }
+      &.isNotCursor {
+        cursor: unset !important;
+        &:hover {
+          background-color: #fff !important;
+          color: #000 !important;
+        }
+      }
+    }
+  }
+}

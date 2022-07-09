@@ -4,15 +4,9 @@ import { delay, from, mergeMap } from "typeless/rx";
 import * as Rx from "typeless/rx";
 
 import NewsHeaderView from "./components/NewsHeaderView";
-import {
-  CardNews,
-  HeaderNews,
-  NewsActions,
-  NewsState,
-  useNewsModule,
-} from "./interface";
+import { NewsActions, NewsState, useNewsModule } from "./interface";
 import { convertToNewsState } from "../../utils/services/getter";
-import { ajax } from "rxjs/internal-compatibility";
+import { CardNews, HeaderNews } from "models/News";
 
 /** epic */
 useNewsModule.epic().on(NewsActions.startLoadToNews, () => {

@@ -1,0 +1,71 @@
+.newsCard {
+  display: flex;
+  flex-direction: column;
+  width: 216px;
+  height: 384px;
+  &__thumbnail {
+    span {
+      display: block;
+      line-height: 0; /*行の高さを0にする*/
+      overflow: hidden; /*拡大してはみ出る要素を隠す*/
+      img {
+        width: 216px;
+        height: auto;
+        cursor: pointer;
+        transform: scale(1);
+        transition: 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+  &__date {
+    font-family: YuGothic;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: left;
+    color: #a3a3a3;
+  }
+  &__title {
+    font-family: YuGothic;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    text-align: left;
+    color: #333;
+    cursor: pointer;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+  &__description {
+    font-family: YuGothic;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: #333;
+    cursor: pointer;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .newsCard {
+    width: 100%;
+    height: auto;
+    &__thumbnail {
+      span {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

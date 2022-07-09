@@ -75,6 +75,7 @@ module.exports = {
     },
     port: 3000,
     proxy: {
+      // https://localhost:3000/rss呼んだら、ローカルプロキシサーバ経由して、target属性のURL先を変換する（https://www.pokemon.com/us/pokemon-news/rssへリクエスト）
       "/rss": {
         target: "https://www.pokemon.com/us/pokemon-news/",
         changeOrigin: true,

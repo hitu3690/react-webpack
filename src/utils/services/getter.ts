@@ -1,6 +1,8 @@
 import xml2 from "xml2js";
 import moment from "moment";
-import { CardNews, HeaderNews, NewsState } from "../../features/news/interface";
+import { NewsState } from "features/news/interface";
+import { PokemonResume } from "models/Pokemon";
+import { HeaderNews, CardNews } from "models/News";
 
 export const convertToNewsState = (data: any): NewsState => {
   let parsedXmlToJson: any[];
@@ -31,6 +33,26 @@ export const convertToNewsState = (data: any): NewsState => {
     cardNews = cardNews.reverse();
   });
   return { headerNews, cardNews };
+};
+
+export const getPokemonResumeState = (res: any): PokemonResume[] => {
+  let pokemonResumes = [] as PokemonResume[];
+  res.forEach(
+    (r: { data: { id: number; name: string; types: any[]; sprites: any } }) => {
+      const { id, name, types, sprites } = r.data;
+      const officialImg = sprites.other["official-artwork"].front_default;
+      const pokeTypes = (types || []).map(
+        (d: { type: { name: string } }) => d.type.name
+      );
+      pokemonResumes.push({
+        id,
+        name,
+        pokeTypes,
+        officialImg,
+      });
+    }
+  );
+  return pokemonResumes;
 };
 
 export const getThumbnails = (data: string): any => {

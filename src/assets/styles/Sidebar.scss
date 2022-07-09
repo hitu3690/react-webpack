@@ -1,0 +1,125 @@
+.sidebar {
+  background-color: #eaeaea;
+  height: auto;
+  width: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  &__logo {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    img {
+      width: 216px;
+      height: auto;
+    }
+  }
+  &__menu {
+    height: auto;
+    padding-left: 0px;
+    position: relative;
+    /* 境界線 */
+    &::before {
+      position: absolute;
+      content: '';
+      left: 1rem;
+      display: inline-block;
+      width: calc(100% - 2rem);
+      height: 1px;
+      background-color: #cfcfcf;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      left: 1rem;
+      display: inline-block;
+      width: calc(100% - 2rem);
+      height: 1px;
+      background-color: #cfcfcf;
+    }
+    li {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+      cursor: pointer;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      transition: all 0.5s ease;
+      img {
+        margin-right: 0.5rem;
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+      }
+      span {
+        font-family: YuGothic;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: left;
+        color: #333;
+      }
+      &:hover {
+        background-color: #fff;
+        transition: all 0.5s ease;
+        span {
+          color: #00aaeb;
+          font-weight: bold;
+        }
+      }
+      &.isCurrentMenu {
+        background-color: #fff;
+        span {
+          font-weight: bold !important;
+          color: #00aaeb !important;
+        }
+        img path {
+          fill: #00aaeb !important;
+          stroke: #00aaeb !important;
+          color: #00aaeb !important;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .sidebar {
+    // Element自体をなくす
+    display: none;
+    // 表示非表示アニメーションのため
+    opacity: 0;
+    animation-name: closeMenu;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+  }
+  .isOpenedMenu {
+    // Element自体を出現
+    display: block;
+    // 表示非表示アニメーションのため
+    opacity: 1;
+    margin-bottom: 60px;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-name: openMenu;
+    .sidebar__logo {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+
+@keyframes openMenu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes closeMenu {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
